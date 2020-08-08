@@ -1,10 +1,10 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios';
 import GoogleMapReact from 'google-map-react';
+import styles from './GoogleMap.module.css';
 
 
 const GoogleMap=()=>{
-    // const [latest,setLatest]=useState([]);
     const [results,setResult]=useState([]);
     useEffect(()=>{
         axios
@@ -13,7 +13,6 @@ const GoogleMap=()=>{
             axios.get("https://corona.lmao.ninja/v3/covid-19/countries")
         ])
         .then((responseArr)=>{
-            // setLatest(responseArr[0].data);
             setResult(responseArr[1].data);
         })
         .catch((err)=>{
@@ -38,7 +37,8 @@ const GoogleMap=()=>{
         </div>
     })
     return(
-        <div style={{ height: '100vh', width: '100%' }}>
+        // <div style={{ height: '100vh', width: '100%' }}>
+        <div className={styles.container}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyCcakwHn8X_NRO56Joqezv8RwcQsCZPoGU "}}
           defaultCenter={{lat: 20,lng: 77}}
